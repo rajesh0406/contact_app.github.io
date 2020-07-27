@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    
+   
+</head>
+<body>
+<section id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-sm-2 col-sm-6 head-column">
+                <h1>
+                    CONTACTS
+                </h1>
+                
+            </div>
+            <div class="col-3 addUser" >
+               <img src="img/add-user.svg" alt="" data-toggle="modal" data-target="#myModal">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 offset-sm-2 col-sm-6 head-line">
+                        <div class="container" id="line">
+        
+                        </div>        
+                    </div>
+                    <div class="col-12 offset-sm-2 col-sm-6 ">
+                      <input type="text" id="search_input" onkeyup="FilterNames()" placeholder="  Search for first name.." title="Type in a name">
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+
+    </div>
+
+</section>
+<section id="contacts">
+    <img src="img/user_avatar.png" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 offset-sm-2 col-sm-6 ">
+                <table id="myTable">
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                   
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Getinput">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5>Contact details</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+              
+            </div>
+            <div class="modal-body">
+              <center> <input type="text" placeholder="First Name" id="first"/><hr>
+              <input type="text" placeholder="Last Name" id="last"/><hr>
+              <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}" id="phone_number" onblur="Number_validation()"/><hr>
+              <input type="email" placeholder="Email-Id" id="mail_id" value="" onblur="Email_validation()" /><hr>
+              <div class="submit_button" >
+                  <a onclick="getdetails()" data-dismiss="modal">SUBMIT</a>
+              </div>
+              </center>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+</section>   
+<section id="ListDetails">
+    <div class="modal fade" id="myModal2" role="dialog" >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5>Contact details</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+              
+            </div>
+            <div class="modal-body">
+                 <img src="" id="image">
+                 <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"><label style="cursor: pointer;" for="file" ><img src="img/add_image.svg" id="add_symbol"></label>
+                 <h5>First Name :</h5><p id="first2"></p><hr>
+                 <h5>Last Name :</h5><p id="last2"></p><hr>
+                 <h5>Phone Number:</h5><p id="phone_number2"></p><hr>
+                 <h5>Mail-id:</h5><p id="mail_id2"></p><hr>
+                 <center>
+                 <input type="button" value="DELETE" data-toggle="modal" data-dismiss="modal" data-target="#myModal3">
+                 <input type="button" value="EDIT" data-toggle="modal" data-dismiss="modal" data-target="#myModal4">
+             </center>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+</section>
+<section id="confirmation">
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5>Contact details</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+              
+            </div>
+            <div class="modal-body">
+              <center> 
+               <p>Are you sure?</p>
+               <input type="button" value="YES" onclick="DeleteRow(this)" data-dismiss="modal">
+               <input type="button" value="NO" data-dismiss="modal">   
+             </center>
+            
+           
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+</section>
+
+
+    <script src="brain.js">
+   
+   
+    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
